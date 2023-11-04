@@ -15,18 +15,18 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-use App\Http\Controllers\ProductController;
+use App\Http\Controllers\ProdutoController;
 
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
 //Localhost:8000/api/products
-Route::post('/produtos', [ProductController::class, 'create']);
-Route::get('produtos/{id}', [ProductController::class, 'getProduct']);
-Route::get('produtos', [ProductController::class, 'getAll']);
-Route::put('/produtos/{id}', [ProductController::class, 'update']);
-Route::delete('/produtos/{id}', [ProductController::class, 'delete']);
+Route::post('/produtos', [ProdutoController::class, 'create']);
+Route::get('produtos/{id}', [ProdutoController::class, 'getProduct']);
+Route::get('produtos', [ProdutoController::class, 'getAll']);
+Route::put('/produtos/{id}', [ProdutoController::class, 'update']);
+Route::delete('/produtos/{id}', [ProdutoController::class, 'delete']);
 
 
 

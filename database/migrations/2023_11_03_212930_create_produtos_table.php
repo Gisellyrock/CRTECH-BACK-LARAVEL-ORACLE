@@ -14,10 +14,12 @@ return new class extends Migration
         Schema::create('produtos', function (Blueprint $table) {
             $table->id();
             $table->string('nome');
-            $table->string('imagem');
             $table->decimal('preco', 11, 2);
             $table->text('descricao');
+            $table->string('imagem');
+            $table->string('categoria');
             $table->decimal('quantidade', 11, 2);
+            $table->timestamps();
         });
     }
 

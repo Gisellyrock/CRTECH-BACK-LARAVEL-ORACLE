@@ -13,9 +13,9 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-use App\Http\Controllers\ProductController;
+use App\Http\Controllers\ProdutoController;
 
 
-Route::get('/products/form', [ProductController::class, 'form']);
+Route::get('/products/form', [ProdutoController::class, 'form']);
 
 
