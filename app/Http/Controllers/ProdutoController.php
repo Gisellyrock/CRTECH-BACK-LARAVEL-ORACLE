@@ -33,21 +33,29 @@ class ProdutoController extends Controller
 
     public function getAll(Request $request)
     {
-        //se tem: ?categoria=valor
         $categoria = $request->input('categoria');
-
-        //se tem: ?name=valor
         $name = $request->input('name');
 
-        if($categoria) {
+        if ($categoria) {
             $produtos = Produto::where('categoria', $categoria)->get();
-        } elseif($name){
+        } elseif ($name) {
             $produtos = Produto::where('name', $name)->get();
         } else {
             $produtos = Produto::all();
         }
+
+        // Converte os campos numéricos (como 'preco') para double
+        foreach ($produtos as $produto) {
+            $produto->preco = (double) $produto->preco;
+        }
+
+        foreach ($produtos as $produto) {
+            $produto->quantidade = (int) $produto->quantidade;
+        }
+
         return response()->json($produtos);
     }
+
 
     public function update(int $id, Request $request)
     {
