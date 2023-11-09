@@ -4,6 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Produto;
+use Illuminate\Support\Facades\Storage;
+
+
 
 class ProdutoController extends Controller
 {
@@ -86,5 +89,21 @@ class ProdutoController extends Controller
         return response()->json(["error" => "Erro ao excluir o produto"], 500);
     }
 
+    public function uploadImagem(Request $request)
+    {
+        if ($request->hasFile('imagem')) {
+
+            $extensao = $request->file('imagem')->extension();
+
+            $nomeArquivo = uniqid();
+            $path = $request->file('imagem')->storePubliclyAs('public/produtos', "$nomeArquivo." . $extensao);
+
+            return response()->json([
+                'url' => Storage::url($path)
+            ]);
+        }
+
+        return response('Erro ao salvar a imagem', 400);
+    }
 
 }

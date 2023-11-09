@@ -27,6 +27,7 @@ Route::get('produtos/{id}', [ProdutoController::class, 'getProduct']);
 Route::get('produtos', [ProdutoController::class, 'getAll']);
 Route::put('/produtos/{id}', [ProdutoController::class, 'update']);
 Route::delete('/produtos/{id}', [ProdutoController::class, 'delete']);
+Route::post('/produtos/imagem', [ProdutoController::class, 'uploadImagem']);
 
 
 
